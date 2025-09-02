@@ -128,7 +128,7 @@ async def update_item(item_id: int, updates: ItemUpdate, db: AsyncSession = Depe
     for field, value in updates.dict(exclude_unset=True).items():
         setattr(db_item, field, value)
 
-    await db.commit() # After commit , the SQLAlchemy object in memory doesn't automatically get updated with the auto-generated values like id or timestamps.
+    await db.commit()
     return db_item
 
 
